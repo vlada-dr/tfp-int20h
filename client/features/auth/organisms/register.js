@@ -7,17 +7,20 @@ import { Button, Layout } from 'ui/atoms'
 import { LoginField } from 'ui/molecules'
 import { validate } from 'features/validations'
 import { register } from '../actions'
-import { Avatar } from '../../user/atoms';
+import { PhotoUpload } from '../../user/atoms';
 import { Checkbox } from '../../../ui/molecules';
 
 
-const mapDispatchToProps = (dispatch) => ({ onRegister: (user) => dispatch(register(user)) })
+const mapDispatchToProps = (dispatch) => ({
+  onRegister: (user) => dispatch(register(user)),
+})
 
 const enhance = compose(
   connect(null, mapDispatchToProps),
   withStateHandlers(
     ({ user = {}, errors = {}, touched = {} }) => ({ user: {
         profileType: 0,
+        photo: null,
       }, errors, touched }),
     {
       updateField: ({ user, touched }) => (name, value) => ({
@@ -32,16 +35,28 @@ const enhance = compose(
     },
     onSubmit: ({ user, touched, errors, onRegister }) => (e) => {
       e.preventDefault()
-      auth.register(user);
+      onRegister(user);
     },
   }),
 );
 
 const RegisterView = ({ valid, errors, onSubmit, onChange, updateField, compare, user }) => {
-  const { username, email, gender, password, profileType } = user
+  const { username, email, gender, password, profileType, photo } = user
 
   return (
     <Layout onSubmit={onSubmit} flow="column" align='center' width='100%' gap={16} padding={2}>
+      <PhotoUpload
+        src={photo}
+        onChange={src => {
+          const e = {
+            target: {
+              photo: src,
+            }
+          };
+
+          onChange(e);
+        }}
+      />
       <LoginField
         name='email'
         value={email}
@@ -49,7 +64,7 @@ const RegisterView = ({ valid, errors, onSubmit, onChange, updateField, compare,
         onBlur={valid}
         error={errors.email}
         icon='Email'
-        label='Електронна адреса'
+        label='Email'
       />
       <LoginField
         name='password'
@@ -60,7 +75,7 @@ const RegisterView = ({ valid, errors, onSubmit, onChange, updateField, compare,
         icon='Password'
         label='Пароль'
       />
-      <Layout flow="row" gap={16}>
+      <Layout flow="row" gap={16} padding={16}>
         <Checkbox
           checked={profileType === 0}
           text="МОДЕЛЬ"
@@ -98,7 +113,9 @@ const RegisterView = ({ valid, errors, onSubmit, onChange, updateField, compare,
           }}
         />
       </Layout>
-      <Button shine darkblue onClick={onSubmit}>Зареєструватися</Button>
+      <Button shine darkblue onClick={onSubmit}>
+        Зарегистироваться
+      </Button>
     </Layout>
   )
 }

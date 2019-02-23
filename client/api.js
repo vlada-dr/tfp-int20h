@@ -5,7 +5,7 @@ const superagent = require('superagent-promise')(require('superagent'), Promise)
 
 const responseBody = res => res.body;
 
-let token = null;
+let token = localStorage.getItem('jwt');
 
 const setToken = _token => {
   token = _token;
@@ -13,7 +13,7 @@ const setToken = _token => {
 
 const withToken = req => {
   if (token) {
-    req.set('Authorization', `Token ${token}`);
+    req.set('Authorization', `Bearer ${token}`);
   }
 };
 
@@ -41,7 +41,7 @@ const api = {
 };
 
 const auth = {
-  current: () => api.get('/account'),
+  current: () => api.get('/users/me'),
   login: user => api.post('/account/login', user),
   register: user => api.post('/account/register', user),
   logout: () => api.get('/account'),

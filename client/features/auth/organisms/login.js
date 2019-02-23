@@ -56,7 +56,7 @@ const LoginView = ({
         value={email}
         onChange={updateEmail}
         icon='User'
-        label='Імя'
+        label='Имя'
       />
       <LoginField
         name='password'
@@ -68,14 +68,16 @@ const LoginView = ({
       <Checkbox
         onClick={onRemember}
         checked={remember}
-        text="Запам'ятати мене"
+        text="Запомнить меня"
       />
       <Error
-        error='Невірний логін або пароль'
+        error='Неверный логин или пароль'
         active={error != null}
       />
       {
-        loading ? <Spinner /> : <Button shine darkblue onClick={submitForm}>Увійти</Button>
+        loading ? <Spinner /> : <Button shine darkblue onClick={submitForm}>
+          Войти
+        </Button>
       }
     </Layout>
   </form>
