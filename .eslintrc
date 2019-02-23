@@ -1,0 +1,30 @@
+{
+  "extends": [
+    "airbnb-base",
+    "plugin:react/recommended"
+  ],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jquery": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/extensions":  ["error", "never", { "json": 1, "scss": 1 }],
+    "indent": ["error", 2, {"SwitchCase": 1}],
+    "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "off",
+    "arrow-parens": ["error", "as-needed"],
+    "quotes": "off",
+    "no-undef": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack/common.js"
+      }
+    }
+  }
+}
