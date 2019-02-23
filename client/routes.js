@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { authRoutes } from 'features/auth/routes';
 import { userRoutes } from 'features/user/routes';
 import { Route, Switch } from 'react-router';
-import { HomePage, NotFoundPage, AboutPage } from 'features/common';
+import { HomePage, NotFoundPage } from 'features/common';
 
 
 const routes = [

@@ -12,12 +12,12 @@ const setToken = _token => {
 };
 
 const withToken = req => {
-  // if (token) {
-  req.set('Authorization', `Token ${token || 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9hcGkvdXNlcnMiLCJpYXQiOjE1NDczNDkyNzYsImV4cCI6MTU1MjUzMzI3NiwibmJmIjoxNTQ3MzQ5Mjc2LCJqdGkiOiJpV0N6VnRONE5PYTk1N0gyIn0.iNO-_h8j-n97P8mC4Zgay1Q1Spa2cdRip5thJgignkg'}`);
-  // }
+  if (token) {
+    req.set('Authorization', `Token ${token}`);
+  }
 };
 
-const baseUrl = '/api';
+const baseUrl = 'https://tfpfind.azurewebsites.net';
 
 const api = {
   del: url => superagent
@@ -41,10 +41,10 @@ const api = {
 };
 
 const auth = {
-  current: () => api.get('/user'),
-  login: user => api.post('/users/login', user),
-  register: user => api.post('/users', user),
-  logout: () => api.post('/Account/LogOff'),
+  current: () => api.get('/account'),
+  login: user => api.post('/account/login', user),
+  register: user => api.post('/account/register', user),
+  logout: () => api.get('/account'),
   update: user => api.post('/user', user),
 };
 

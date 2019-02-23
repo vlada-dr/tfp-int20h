@@ -23,6 +23,21 @@ export const color = {
   darkGray: '#333333',
   blue: '#5FBDC5',
   darkBlue: '#3C9DA5',
+
+  oxford: '#354052',
+  blueGray: '#7f8fa4',
+  lightBlueGray: '#c5ccd6',
+
+  i0: '#E8EAF6',
+  i1: '#C5CAE9',
+  i2: '#9FA8DA',
+  i3: '#7986CB',
+  i4: '#5C6BC0',
+  i5: '#3F51B5',
+  i6: '#3949AB',
+  i7: '#303F9F',
+  i8: '#283593',
+  i9: '#1A237E',
 };
 
 export const size = {
@@ -53,36 +68,9 @@ export const globalStyles = css`
     background-attachment: fixed;
   }
   
-  h1 {
-    line-height: 63px;
-    font-family: ${font.playfair};
-    font-weight: bold;
-    font-size: 54px;
-    
-    ${media.pho`
-      line-height: 42px;
-      font-size: 36px;
-    `}
-  }
-  
-  h2 {
-    line-height: 36px;
-    font-weight: bold;
-    font-size: 40px;
-    letter-spacing: 0.5px;
-    
-     ${media.pho`
-      line-height: 34px;
-      font-size: 24px;
-      letter-spacing: 0;
-    `}
-  }
-  
-  h3 {
-    line-height: 34px;
-    font-weight: bold;
-    font-size: 20px;
-    text-transform: uppercase;
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
   }
   
   a {

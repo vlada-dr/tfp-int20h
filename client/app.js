@@ -7,6 +7,7 @@ import { auth } from 'api';
 import Notification from 'ui/notification';
 import { Menu } from 'ui/organisms';
 import { compose, lifecycle } from 'recompose';
+import { Shapes } from 'ui/icons';
 
 
 const enhance = compose(
@@ -30,6 +31,7 @@ const Layout = () => (
     <Menu />
     <Content>
       {rootRoutes()}
+      <StyledBackground />
     </Content>
   </Wrapper>
 );
@@ -39,7 +41,7 @@ export const App = enhance(Layout);
 const Content = styled.div`
   z-index: 3;
   position: relative;
-  padding-top: 78px;
+  padding-top: 90px;
   width: 100vw;
   overflow: hidden;
   
@@ -49,9 +51,14 @@ const Content = styled.div`
 `;
 
 const Wrapper = styled.div`
+  width: 100%;
+`;
+
+const StyledBackground = styled(Shapes)`
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
-  position: absolute;
-  width:100%;
-  min-height: 100vh;
+  position: fixed;
+  z-index: -1;
 `;

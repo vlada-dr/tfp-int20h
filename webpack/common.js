@@ -1,4 +1,4 @@
-process.title = 'lunamaker:webpack';
+process.title = 'tfp:webpack';
 
 const { cpus } = require('os');
 const { resolve } = require('path');
@@ -69,7 +69,7 @@ const config = {
       loaders: ['babel-loader'],
     }),
     new HtmlPlugin({
-      title: 'lunamak☾r',
+      title: 'tfp',
       template: 'index.tpl.html',
     }),
     new EnvironmentPlugin({
