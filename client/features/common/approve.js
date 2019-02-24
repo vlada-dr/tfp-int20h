@@ -1,7 +1,6 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
-import { color } from 'ui/theme';
 import { Button } from '../../ui/atoms';
 
 const PHOTO = 'https://static0.vigbo.com/u14829/17548/blog/1933187/436937/7106405/1000-yana_tkachenko-417bd84d0da146387435c4302034fcd0.jpg';
@@ -13,23 +12,23 @@ const date = {
 
 export const ApprovePage = withRouter(() => (
   <div>
-  <StyledWrapper>
-    <div>
-    <Title>
-      Фотосессия
-    </Title>
-    <BoldTitle>
-      PLAY STUDIO
-    </BoldTitle>
-    <Address>
-      г. Киев, просп. Леся Курбаса 2Б
-    </Address>
-    <Address>
-      {date.time}, {date.date}
-    </Address>
-    </div>
-    <Image src={PHOTO} />
-  </StyledWrapper>
+    <StyledWrapper>
+      <div>
+        <Title>
+          Фотосессия
+        </Title>
+        <BoldTitle>
+          PLAY STUDIO
+        </BoldTitle>
+        <Address>
+          г. Киев, просп. Леся Курбаса 2Б
+        </Address>
+        <Address>
+          {date.time}, {date.date}
+        </Address>
+      </div>
+      <Image src={PHOTO} />
+    </StyledWrapper>
     <StyledButton>
       <Button>
         ПОДТВЕРДИТЬ

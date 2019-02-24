@@ -50,23 +50,12 @@ const auth = {
 
 const models = {
   all: filters => api.post('/api/models', filters),
-  like: id => api.get(`/api/models?userId=${id}`),
+  like: userId => api.get(`/users/like?userId=${userId}`),
   get: id => api.get(`/api/models/${id}`),
   update: (id, model) => api.put(`/api/models/${id}`, model),
 };
 
 const limit = (count, p) => `limit=${count}&offset=${p ? p * count : 0}`;
-
-const presents = {
-  all: () => api.get('/presents?limit=20&offset=0'),
-  get: id => api.get(`/presents/${id}`),
-  add: present => api.post('/presents', present),
-  del: id => api.del(`/presents/${id}`),
-  edit: (id, present) => api.put(`/presents/${id}`, present),
-  search: present => api.get(`/presents?${present}`),
-  like: id => api.post(`/presents/${id}/favorite`),
-  unlike: id => api.del(`/presents/${id}/favorite`),
-};
 
 const tag = {
   all: () => api.get('/tags'),
@@ -78,7 +67,6 @@ const tag = {
 
 export {
   auth,
-  presents,
   tag,
   setToken,
   models,

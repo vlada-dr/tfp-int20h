@@ -4,10 +4,7 @@ import {
   LOGOUT,
   LOGIN,
   REGISTER,
-  EDITOR_PAGE_UNLOADED,
-  DELETE_PRESENT,
-  EDIT_PRESENT,
-  ADD_PRESENT,
+  LIKE_MODELS,
   LOAD_USER,
   ADD_NOTIFICATION,
   REMOVE_NOTIFICATION,
@@ -26,6 +23,11 @@ export const commonReducer = (state = {
       };
     case REDIRECT:
       return { ...state, redirectTo: null };
+    case LIKE_MODELS:
+      return {
+        ...state,
+        user: action.payload,
+      };
     case LOAD_USER:
       return {
         ...state,

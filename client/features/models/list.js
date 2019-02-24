@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { all, like } from './actions';
 import { Card } from '../user/atoms/card';
 import { Layout } from '../../ui/atoms';
+import { LIKE_MODELS } from '../../types';
 
 const photos = [
   {
@@ -45,6 +46,7 @@ class ListView extends React.Component {
     const { models, likes, like } = this.props;
 
     return (
+      <StyledWrapper>
       <Layout flow="row" wrap justify="center">
         {
           models.length ? models.map(({ user, userId }, i) => user.gallery && user.gallery.photos.length && (
@@ -54,16 +56,20 @@ class ListView extends React.Component {
               country={user.country}
               city={user.city}
               name={user.name}
-              liked={likes.includes(userId)}
+              liked={likes.some(({ toId }) => toId === userId)}
               like={() => like(userId)}
             />
           )) : null
         }
       </Layout>
+      </StyledWrapper>
     );
   }
 };
-
+const StyledWrapper = styled.div`
+max-width: 1100px;
+margin:auto;
+`
 const Row = styled.div`
   display: flex;
   flex-flow: row wrap;

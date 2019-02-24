@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Layout } from '../../../ui/atoms';
 import { color } from 'ui/theme';
 import { HeartOutlineIcon, HeartIcon } from '../../../ui/icons';
@@ -20,7 +21,9 @@ export function Card({
         ))}
       </Layout>
       <Layout flow="row" align="center">
-        <Avatar src={photo} />
+        <Link to={'/steps'}>
+          <Avatar src={photo} />
+        </Link>
         <div>
           <div>
             {name}

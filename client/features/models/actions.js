@@ -12,4 +12,5 @@ export const all = (filters) => ({
 export const like = (id) => ({
   type: LIKE_MODELS,
   payload: models.like(id),
+  id,
 });

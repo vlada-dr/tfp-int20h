@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-
+import { color } from 'ui/theme';
 
 export const Button = styled.button`
   padding: 12px 24px;
@@ -22,7 +22,7 @@ export const Button = styled.button`
   border-radius: 4px;
     
   &:hover {
-    background: ${color.darkBlue};
+    background: ${color.i9};
   }
  
   ${p => p.secondary && css`
