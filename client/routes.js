@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { authRoutes } from 'features/auth/routes';
 import { userRoutes } from 'features/user/routes';
 import { Route, Switch } from 'react-router';
-import { HomePage, NotFoundPage } from 'features/common';
+import { HomePage, NotFoundPage, StepsPage, ApprovePage } from 'features/common';
 
 
 const routes = [
@@ -12,6 +12,16 @@ const routes = [
   {
     path: '/',
     component: HomePage,
+    exact: true,
+  },
+  {
+    path: '/steps',
+    component: StepsPage,
+    exact: true,
+  },
+  {
+    path: '/approve',
+    component: ApprovePage,
     exact: true,
   },
   { component: NotFoundPage },
