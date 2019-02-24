@@ -7,7 +7,7 @@ import { Login, Register } from './'
 
 
 const mapStateToProps = (state) => ({
-  isAuth: state.auth.isAuth,
+  isAuth: state.common.user,
   redirectTo: state.common.redirectTo,
 })
 
@@ -34,6 +34,9 @@ export class Log extends React.Component {
         >
           {
             login ? <Login /> : <Register />
+          }
+          {
+            isAuth && <Redirect to={redirectTo} />
           }
           {
             isAuth && <Redirect to={redirectTo} />

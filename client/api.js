@@ -5,7 +5,7 @@ const superagent = require('superagent-promise')(require('superagent'), Promise)
 
 const responseBody = res => res.body;
 
-let token = localStorage.getItem('jwt');
+let token = window.localStorage.getItem('jwt');
 
 const setToken = _token => {
   token = _token;
@@ -48,6 +48,13 @@ const auth = {
   update: user => api.post('/user', user),
 };
 
+const models = {
+  all: filters => api.post('/api/models', filters),
+  like: id => api.get(`/api/models?userId=${id}`),
+  get: id => api.get(`/api/models/${id}`),
+  update: (id, model) => api.put(`/api/models/${id}`, model),
+};
+
 const limit = (count, p) => `limit=${count}&offset=${p ? p * count : 0}`;
 
 const presents = {
@@ -74,4 +81,5 @@ export {
   presents,
   tag,
   setToken,
+  models,
 };

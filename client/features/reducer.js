@@ -29,20 +29,21 @@ export const commonReducer = (state = {
     case LOAD_USER:
       return {
         ...state,
-        user: action.error ? null : action.payload.user,
+        user: action.error ? null : action.payload,
+        redirectTo: action.payload ? action.payload.id : '',
       };
     case LOGOUT:
       return { ...state, user: null };
     case LOGIN:
       return {
         ...state,
-        redirectTo: action.error ? null : `/user/${action.payload.username};`,
+        redirectTo: action.error ? null : `/user/${action.payload.username}`,
         user: action.payload.user,
       };
     case REGISTER:
       return {
         ...state,
-        redirectTo: action.error ? null : `/user/${action.payload.username};`,
+        redirectTo: action.error ? null : `/user/${action.payload.username}`,
         user: action.payload.user,
       };
     case ADD_NOTIFICATION:
@@ -59,13 +60,6 @@ export const commonReducer = (state = {
         ...state,
         notification: {},
       };
-    case DELETE_PRESENT:
-      return { ...state, redirectTo: '/' };
-    case ADD_PRESENT:
-      return { ...state, redirectTo: '/' };
-    case EDIT_PRESENT:
-      return { ...state, redirectTo: '/' };
-    case EDITOR_PAGE_UNLOADED:
     default:
       return state
   }
